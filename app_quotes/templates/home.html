@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+<!-- <h2>Welcome</h2> -->
+
+  {% if ticker %}
+    {{ ticker }}
+  {% endif %}
+
+  {% if api %}
+    {% if api == "Error.." %}
+      <h3>There was an error</h3>
+    {% else %}
+      <h3>{{ api.companyName }}</h3><br>
+      <p>Price: ${{ api.latestPrice }}</p>
+      <p>Previous close: {{ api.previousClose }}</p>
+      <p>Market cap: {{ api.marketCap }}</p>
+      <p>YearToDate change: {{ api.ytdChange }}</p>
+      <p>52Week high: {{ api.week52High }}</p>
+      <p>52Week low: {{ api.week52Low }}</p>
+    {% endif %}
+  {% endif %}
+
+{% endblock %}
